@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🎆</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0e27;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            z-index: 0;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .year-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 15px 40px;
+            margin-top: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            font-weight: 700;
+            letter-spacing: 3px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5em;
+            font-weight: 900;
+            margin: 30px 0;
+            background: linear-gradient(135deg, #fff 0%, #ffd700 50%, #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            letter-spacing: 5px;
+            line-height: 1.2;
+        }
+
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)); }
+            to { filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8)); }
+        }
+
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+
+        .countdown-section {
+            margin: 80px 0;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+            perspective: 1000px;
+        }
+
+        .time-box {
+            position: relative;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            border-radius: 25px;
+            padding: 35px 40px;
+            min-width: 160px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 
+                        inset 0 -5px 20px rgba(0, 0, 0, 0.2),
+                        inset 0 5px 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+        }
+
+        .time-box::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1, #ffd700);
+            background-size: 300% 300%;
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .time-box:hover {
+            transform: translateY(-15px) rotateX(5deg) scale(1.05);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .time-box:hover::before {
+            opacity: 0.7;
+        }
+
+        .time-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 4.5em;
+            font-weight: 900;
+            display: block;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 5px 20px rgba(255, 215, 0, 0.6));
+            letter-spacing: 5px;
+            line-height: 1;
+            animation: numberPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes numberPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .time-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .time-separator {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            align-self: center;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        .celebration-message {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            font-weight: 900;
+            margin: 60px 0;
+            display: none;
+            animation: celebrationPop 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            letter-spacing: 6px;
+            background: linear-gradient(135deg, #fff 0%, #ffd700 50%, #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.9));
+        }
+
+        .final-countdown {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .final-countdown.active {
+            display: flex;
+        }
+
+        .final-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 25vw;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 60px rgba(255, 215, 0, 0.9));
+            animation: countdownPulse 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            letter-spacing: -20px;
+        }
+
+        @keyframes countdownPulse {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes celebrationPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .wishes-section {
+            margin: 100px 0 60px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+        }
+
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .wish-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .wish-card:nth-child(1) { animation-delay: 0.1s; }
+        .wish-card:nth-child(2) { animation-delay: 0.2s; }
+        .wish-card:nth-child(3) { animation-delay: 0.3s; }
+        .wish-card:nth-child(4) { animation-delay: 0.4s; }
+        .wish-card:nth-child(5) { animation-delay: 0.5s; }
+        .wish-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wish-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 25px 60px rgba(255, 215, 0, 0.3);
+        }
+
+        .wish-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .wish-card:nth-child(2) .wish-icon { animation-delay: 0.3s; }
+        .wish-card:nth-child(3) .wish-icon { animation-delay: 0.6s; }
+        .wish-card:nth-child(4) .wish-icon { animation-delay: 0.9s; }
+        .wish-card:nth-child(5) .wish-icon { animation-delay: 1.2s; }
+        .wish-card:nth-child(6) .wish-icon { animation-delay: 1.5s; }
+
+        .wish-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            color: #ffd700;
+        }
+
+        .wish-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        #fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.8em;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 100;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .music-control:hover {
+            transform: scale(1.15) rotate(10deg);
+            border-color: #ffd700;
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.5);
+        }
+
+        .music-control.playing {
+            animation: musicPulse 0.6s ease-in-out infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .footer {
+            margin: 80px 0 40px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+            opacity: 0.8;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .time-box {
+                min-width: 110px;
+                padding: 25px 30px;
+            }
+            .time-value {
+                font-size: 3em;
+            }
+            .time-separator {
+                font-size: 2.5em;
+            }
+            .celebration-message {
+                font-size: 2em;
+            }
+            .wishes-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="stars" id="stars"></div>
+    <canvas id="fireworks"></canvas>
+    
+    <div class="final-countdown" id="finalCountdown">
+        <div class="final-number" id="finalNumber">10</div>
+    </div>
+    
+    <div class="container">
+        <div class="year-badge">COUNTDOWN TO 2026</div>
+        
+        <h1>
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 15px;">
+                <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z"/>
+            </svg>
+            NEW YEAR 2026
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-left: 15px;">
+                <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z"/>
+            </svg>
+        </h1>
+        
+        <p class="subtitle">Let's celebrate together as we welcome a new beginning</p>
+
+        <div class="countdown-section">
+            <div class="countdown">
+                <div class="time-box">
+                    <span class="time-value" id="days">00</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-box">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-box">
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-box">
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="celebration-message" id="celebrationMsg">
+            <svg width="70" height="70" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 20px;">
+                <path d="M12 2L9 9L2 9L7.5 13.5L5.5 21L12 16.5L18.5 21L16.5 13.5L22 9L15 9L12 2Z"/>
+            </svg>
+            HAPPY NEW YEAR!
+            <svg width="70" height="70" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-left: 20px;">
+                <path d="M12 2L9 9L2 9L7.5 13.5L5.5 21L12 16.5L18.5 21L16.5 13.5L22 9L15 9L12 2Z"/>
+            </svg>
+        </div>
+
+        <div class="wishes-section">
+            <h2 class="section-title">
+                <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 10px;">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                Our Wishes for You
+            </h2>
+            
+            <div class="wishes-grid">
+                <div class="wish-card">
+                    <div class="wish-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2">
+                            <path d="M12 2L9 9L2 9L7.5 13.5L5.5 21L12 16.5L18.5 21L16.5 13.5L22 9L15 9L12 2Z"/>
+                            <circle cx="12" cy="12" r="1" fill="#ffd700"/>
+                        </svg>
+                    </div>
+                    <h3 class="wish-title">Success & Prosperity</h3>
+                    <p class="wish-text">May 2026 bring you abundant success in all your endeavors and prosperity in everything you do.</p>
+                </div>
+                
+                <div class="wish-card">
+                    <div class="wish-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ff6b9d" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3 class="wish-title">Health & Happiness</h3>
+                    <p class="wish-text">Wishing you vibrant health, endless joy, and precious moments with loved ones throughout the year.</p>
+                </div>
+                
+                <div class="wish-card">
+                    <div class="wish-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#4ecdc4" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="wish-title">Growth & Adventure</h3>
+                    <p class="wish-text">May you embrace new challenges, discover exciting opportunities, and reach new heights in 2026.</p>
+                </div>
+                
+                <div class="wish-card">
+                    <div class="wish-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            <circle cx="12" cy="12" r="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="wish-title">Dreams Come True</h3>
+                    <p class="wish-text">May all your aspirations manifest into reality and your wildest dreams become your greatest achievements.</p>
+                </div>
+                
+                <div class="wish-card">
+                    <div class="wish-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2" fill="#ff6b6b"/>
+                        </svg>
+                    </div>
+                    <h3 class="wish-title">Focus & Clarity</h3>
+                    <p class="wish-text">Find the wisdom to make right choices, the courage to pursue your goals, and the strength to overcome obstacles.</p>
+                </div>
+                
+                <div class="wish-card">
+                    <div class="wish-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2">
+                            <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="wish-title">Peace & Harmony</h3>
+                    <p class="wish-text">Experience inner peace, harmonious relationships, and a balanced life filled with gratitude and contentment.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Cheers to new beginnings and endless possibilities!
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-left: 8px;">
+                    <path d="M12 2L9 9L2 9L7.5 13.5L5.5 21L12 16.5L18.5 21L16.5 13.5L22 9L15 9L12 2Z"/>
+                </svg>
+            </p>
+        </div>
+    </div>
+
+    <div class="music-control" id="musicControl" onclick="toggleMusic()" title="Toggle Celebration Music">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="musicIcon">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+        </svg>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="celebration.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+
+        // Fireworks canvas
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        let fireworks = [];
+        let particles = [];
+        let isNewYear = false;
+
+        class Firework {
+            constructor(x, y) {
+                this.x = x;
+                this.y = canvas.height;
+                this.targetY = y;
+                this.speed = 6;
+                this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                this.exploded = false;
+            }
+
+            update() {
+                if (this.y > this.targetY) {
+                    this.y -= this.speed;
+                } else if (!this.exploded) {
+                    this.explode();
+                    this.exploded = true;
+                }
+            }
+
+            explode() {
+                for (let i = 0; i < 60; i++) {
+                    particles.push(new Particle(this.x, this.y, this.color));
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+            }
+        }
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.velocity = {
+                    x: (Math.random() - 0.5) * 10,
+                    y: (Math.random() - 0.5) * 10
+                };
+                this.alpha = 1;
+                this.decay = Math.random() * 0.015 + 0.01;
+            }
+
+            update() {
+                this.velocity.y += 0.15;
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= this.decay;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 14, 39, 0.15)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if ((Math.random() < 0.08 && isNewYear) || Math.random() < 0.025) {
+                fireworks.push(new Firework(
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height / 2
+                ));
+            }
+
+            fireworks.forEach((fw, i) => {
+                fw.update();
+                fw.draw();
+                if (fw.exploded) {
+                    fireworks.splice(i, 1);
+                }
+            });
+
+            particles.forEach((p, i) => {
+                p.update();
+                p.draw();
+                if (p.alpha <= 0) {
+                    particles.splice(i, 1);
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Countdown timer
+        let finalCountdownStarted = false;
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const newYear = new Date('January 1, 2026 00:00:00').getTime();
+            const distance = newYear - now;
+
+            if (distance < 0) {
+                document.getElementById('celebrationMsg').style.display = 'block';
+                document.querySelector('.countdown-section').style.opacity = '0.3';
+                document.getElementById('finalCountdown').classList.remove('active');
+                isNewYear = true;
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Final 10 second countdown
+            if (distance <= 10000 && !finalCountdownStarted) {
+                finalCountdownStarted = true;
+                document.getElementById('finalCountdown').classList.add('active');
+                startFinalCountdown(seconds);
+            }
+
+            if (distance > 10000) {
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+
+            if (distance < 60000 && !isNewYear) {
+                isNewYear = true;
+            }
+        }
+
+        function startFinalCountdown(startSecond) {
+            const finalNumber = document.getElementById('finalNumber');
+            let currentSecond = startSecond;
+
+            function updateFinalNumber() {
+                if (currentSecond > 0) {
+                    finalNumber.textContent = currentSecond;
+                    finalNumber.style.animation = 'none';
+                    setTimeout(() => {
+                        finalNumber.style.animation = 'countdownPulse 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    }, 10);
+                    
+                    // Create extra fireworks during final countdown
+                    for (let i = 0; i < 3; i++) {
+                        fireworks.push(new Firework(
+                            Math.random() * canvas.width,
+                            Math.random() * canvas.height / 2
+                        ));
+                    }
+                    
+                    currentSecond--;
+                    setTimeout(updateFinalNumber, 1000);
+                } else {
+                    finalNumber.textContent = 'HAPPY NEW YEAR!';
+                    finalNumber.style.fontSize = '12vw';
+                    finalNumber.style.letterSpacing = '10px';
+                    
+                    // Massive fireworks explosion
+                    for (let i = 0; i < 20; i++) {
+                        setTimeout(() => {
+                            fireworks.push(new Firework(
+                                Math.random() * canvas.width,
+                                Math.random() * canvas.height / 2
+                            ));
+                        }, i * 100);
+                    }
+                    
+                    setTimeout(() => {
+                        document.getElementById('finalCountdown').classList.remove('active');
+                        document.getElementById('celebrationMsg').style.display = 'block';
+                    }, 4000);
+                }
+            }
+
+            updateFinalNumber();
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Music control
+        let isPlaying = false;
+        const bgMusic = document.getElementById('bgMusic');
+        const musicControl = document.getElementById('musicControl');
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicControl.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                bgMusic.play().catch(err => {
+                    alert('Please add celebration.mp3 file to the same directory as this HTML file to enable music.');
+                });
+                musicControl.classList.add('playing');
+                isPlaying = true;
+            }
+        }
+    </script>
+</body>
+</html>
