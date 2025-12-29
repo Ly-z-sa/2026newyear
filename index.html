@@ -261,7 +261,7 @@
 
         .final-number {
             font-family: 'Orbitron', sans-serif;
-            font-size: 25vw;
+            font-size: 15vw;
             font-weight: 900;
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
             -webkit-background-clip: text;
@@ -269,7 +269,250 @@
             background-clip: text;
             filter: drop-shadow(0 0 60px rgba(255, 215, 0, 0.9));
             animation: countdownPulse 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            letter-spacing: -20px;
+            letter-spacing: -10px;
+            line-height: 1;
+            text-align: center;
+        }
+
+        @keyframes countdownPulse {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes celebrationPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        /* Self-Destruct Styles */
+        .self-destruct-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(139, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .self-destruct-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .destruct-warning {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            font-weight: 900;
+            color: #ff4444;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+            animation: warningFlash 0.8s ease-in-out infinite alternate;
+            letter-spacing: 3px;
+        }
+
+        @keyframes warningFlash {
+            from { opacity: 0.8; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.02); }
+        }
+
+        .destruct-timer {
+            font-family: 'Orbitron', monospace;
+            font-size: 8vw;
+            font-weight: 900;
+            color: #ff0000;
+            text-shadow: 
+                0 0 10px #ff0000,
+                0 0 20px #ff0000;
+            animation: scifiPulse 0.6s ease-in-out infinite;
+            margin: 30px 0;
+            letter-spacing: 8px;
+            border: 3px solid #ff0000;
+            border-radius: 15px;
+            padding: 20px 40px;
+            background: rgba(255, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 0 30px rgba(255, 0, 0, 0.5),
+                inset 0 0 30px rgba(255, 0, 0, 0.2);
+            line-height: 1;
+            transform-origin: center center;
+        }
+
+        @keyframes scifiPulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.05);
+                filter: brightness(1.3);
+            }
+        }
+
+        .destruct-message {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-top: 15px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .test-button {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            border: 2px solid #fff;
+            border-radius: 12px;
+            padding: 12px 20px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+        }
+
+        .test-button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff6666, #ff0000);
+            box-shadow: 0 12px 35px rgba(255, 0, 0, 0.6);
+        }
+
+        .destructed-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .destructed-page.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .destructed-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4em;
+            font-weight: 900;
+            color: #ff0000;
+            text-align: center;
+            letter-spacing: 5px;
+            animation: destructedGlow 2s ease-in-out infinite alternate;
+        }
+
+        /* Sci-Fi Corner Blocks */
+        .corner-block {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #ff0000;
+            background: #000;
+            z-index: 2001;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        .corner-block::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff0000;
+            background: #ff0000;
+            box-shadow: 0 0 10px #ff0000;
+        }
+        
+        .corner-top-left {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .corner-top-left::before {
+            top: -2px;
+            left: -2px;
+        }
+        
+        .corner-top-right {
+            top: 20px;
+            right: 20px;
+            border-left: none;
+            border-bottom: none;
+        }
+        
+        .corner-top-right::before {
+            top: -2px;
+            right: -2px;
+        }
+        
+        .corner-bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-right: none;
+            border-top: none;
+        }
+        
+        .corner-bottom-left::before {
+            bottom: -2px;
+            left: -2px;
+        }
+        
+        .corner-bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        .corner-bottom-right::before {
+            bottom: -2px;
+            right: -2px;
+        }
+
+        @keyframes destructedGlow {
+            from { text-shadow: 0 0 20px #ff0000; }
+            to { text-shadow: 0 0 40px #ff0000, 0 0 60px #ff0000; }
         }
 
         @keyframes countdownPulse {
@@ -479,6 +722,22 @@
         <div class="final-number" id="finalNumber">10</div>
     </div>
     
+    <!-- Self-Destruct Overlay -->
+    <div class="self-destruct-overlay" id="selfDestructOverlay">
+        <div class="corner-block corner-top-left"></div>
+        <div class="corner-block corner-top-right"></div>
+        <div class="corner-block corner-bottom-left"></div>
+        <div class="corner-block corner-bottom-right"></div>
+        <div class="destruct-warning">SYSTEM TERMINATION INITIATED</div>
+        <div class="destruct-timer" id="destructTimer">60</div>
+        <div class="destruct-message">Website will self-destruct in</div>
+    </div>
+    
+    <!-- Destructed Page -->
+    <div class="destructed-page" id="destructedPage">
+        <div class="destructed-text">Website Self-Destructed</div>
+    </div>
+    
     <div class="container">
         <div class="year-badge">COUNTDOWN TO 2026</div>
         
@@ -626,9 +885,24 @@
             <circle cx="18" cy="16" r="3"/>
         </svg>
     </div>
+    
+
 
     <audio id="bgMusic" loop>
         <source src="christmas.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Self-Destruct Audio -->
+    <audio id="destructMusic" loop>
+        <source src="clock-ticking-60-second-countdown.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="destructSound">
+        <source src="self-destructed.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="countdownAudio">
+        <source src="countdown.m4a" type="audio/mp4">
     </audio>
 
     <script>
@@ -763,11 +1037,40 @@
 
         // Countdown timer
         let finalCountdownStarted = false;
+        let selfDestructTriggered = false;
+        
+        // Check if site was already destructed
+        function checkDestructionStatus() {
+            const destructTime = new Date('January 2, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            
+            if (now >= destructTime) {
+                // Site should be destructed - show destruction page immediately
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+                document.body.style.height = '100%';
+                document.getElementById('destructedPage').classList.add('active');
+                return true;
+            }
+            return false;
+        }
         
         function updateCountdown() {
+            // Check if site should be destructed first
+            if (checkDestructionStatus()) return;
+            
             const now = new Date().getTime();
             const newYear = new Date('January 1, 2026 00:00:00').getTime();
+            const selfDestructTime = new Date('January 2, 2026 00:00:00').getTime();
             const distance = newYear - now;
+            const destructDistance = selfDestructTime - now;
+
+            // Auto-trigger self-destruct at exactly Jan 2, 2026 00:00:00
+            if (destructDistance <= 0 && !selfDestructTriggered) {
+                triggerSelfDestruct();
+                return;
+            }
 
             if (distance < 0) {
                 document.getElementById('celebrationMsg').style.display = 'block';
@@ -803,15 +1106,24 @@
 
         function startFinalCountdown(startSecond) {
             const finalNumber = document.getElementById('finalNumber');
+            const countdownAudio = document.getElementById('countdownAudio');
             let currentSecond = startSecond;
+
+            // Play countdown audio
+            countdownAudio.volume = 0.8;
+            countdownAudio.play().catch(err => {
+                console.log('Countdown audio not found: countdown.m4a');
+            });
 
             function updateFinalNumber() {
                 if (currentSecond > 0) {
                     finalNumber.textContent = currentSecond;
                     finalNumber.style.animation = 'none';
-                    setTimeout(() => {
-                        finalNumber.style.animation = 'countdownPulse 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-                    }, 10);
+                    
+                    // Force reflow to ensure animation reset
+                    finalNumber.offsetHeight;
+                    
+                    finalNumber.style.animation = 'countdownPulse 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
                     
                     // Create extra fireworks during final countdown
                     for (let i = 0; i < 3; i++) {
@@ -825,8 +1137,8 @@
                     setTimeout(updateFinalNumber, 1000);
                 } else {
                     finalNumber.textContent = 'HAPPY NEW YEAR!';
-                    finalNumber.style.fontSize = '12vw';
-                    finalNumber.style.letterSpacing = '10px';
+                    finalNumber.style.fontSize = '8vw';
+                    finalNumber.style.letterSpacing = '5px';
                     
                     // Massive fireworks explosion
                     for (let i = 0; i < 20; i++) {
@@ -849,11 +1161,18 @@
         }
 
         setInterval(updateCountdown, 1000);
-        updateCountdown();
+        window.countdownInterval = setInterval(updateCountdown, 1000);
+        
+        // Initialize - check destruction status on page load
+        if (!checkDestructionStatus()) {
+            updateCountdown();
+        }
 
         // Music control
         let isPlaying = false;
         const bgMusic = document.getElementById('bgMusic');
+        const destructMusic = document.getElementById('destructMusic');
+        const destructSound = document.getElementById('destructSound');
         const musicControl = document.getElementById('musicControl');
 
         function toggleMusic() {
@@ -869,6 +1188,144 @@
                 isPlaying = true;
             }
         }
+
+        // Self-Destruct Functions
+        function triggerSelfDestruct() {
+            if (selfDestructTriggered) return;
+            selfDestructTriggered = true;
+            
+            // Completely disable page interaction
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.height = '100%';
+            
+            // Stop all other music
+            bgMusic.pause();
+            
+            // Show self-destruct overlay
+            document.getElementById('selfDestructOverlay').classList.add('active');
+            
+            // Play destruct countdown music
+            destructMusic.volume = 0.7;
+            destructMusic.play().catch(err => {
+                console.log('Destruct countdown music not found: destruct-countdown.mp3');
+                alert('Add destruct-countdown.mp3 file for countdown music');
+            });
+            
+            // Start 60-second countdown
+            startSelfDestructCountdown(60);
+        }
+
+        function startSelfDestructCountdown(seconds) {
+            const destructTimer = document.getElementById('destructTimer');
+            let currentSecond = seconds;
+            
+            function updateDestructTimer() {
+                if (currentSecond > 0) {
+                    // Format as MM:SS
+                    const minutes = Math.floor(currentSecond / 60);
+                    const secs = currentSecond % 60;
+                    destructTimer.textContent = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                    
+                    // Intensify effects as countdown gets lower
+                    if (currentSecond <= 10) {
+                        destructTimer.style.textShadow = '0 0 15px #ff0000, 0 0 30px #ff0000';
+                        if (document.body.style.animation !== 'shake 0.1s ease-in-out infinite') {
+                            document.body.style.animation = 'shake 0.1s ease-in-out infinite';
+                        }
+                    } else if (currentSecond <= 30) {
+                        destructTimer.style.textShadow = '0 0 12px #ff0000, 0 0 25px #ff0000';
+                    }
+                    
+                    // Create massive fireworks during final countdown
+                    if (currentSecond <= 10) {
+                        try {
+                            for (let i = 0; i < 3; i++) {
+                                fireworks.push(new Firework(
+                                    Math.random() * canvas.width,
+                                    Math.random() * canvas.height / 2
+                                ));
+                            }
+                        } catch (e) {
+                            console.log('Fireworks error:', e);
+                        }
+                    }
+                    
+                    currentSecond--;
+                    setTimeout(updateDestructTimer, 1000);
+                } else {
+                    // SELF-DESTRUCT!
+                    executeDestruction();
+                }
+            }
+            
+            updateDestructTimer();
+        }
+
+        function executeDestruction() {
+            const destructTimer = document.getElementById('destructTimer');
+            const overlay = document.getElementById('selfDestructOverlay');
+            const destructedPage = document.getElementById('destructedPage');
+            
+            // Immediately start transition
+            destructTimer.textContent = '00:00';
+            
+            // Stop countdown music
+            destructMusic.pause();
+            
+            // Keep page locked - don't restore scrolling
+            document.body.style.animation = '';
+            
+            // Play explosion sound
+            destructSound.volume = 0.8;
+            destructSound.play().catch(err => {
+                console.log('Explosion sound not found: explosion.mp3');
+            });
+            
+            // Start immediate transition
+            setTimeout(() => {
+                // Start fade out of overlay
+                overlay.style.opacity = '0';
+                
+                // Show destructed page and fade it in
+                destructedPage.classList.add('active');
+                
+                // Remove overlay after fade completes
+                setTimeout(() => {
+                    overlay.classList.remove('active');
+                }, 500);
+            }, 500);
+            
+            // Create massive explosion effect
+            try {
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        for (let j = 0; j < 5; j++) {
+                            fireworks.push(new Firework(
+                                Math.random() * canvas.width,
+                                Math.random() * canvas.height
+                            ));
+                        }
+                    }, i * 50);
+                }
+            } catch (e) {
+                console.log('Explosion fireworks error:', e);
+            }
+        }
+
+
+
+        // Add shake animation for destruction effect
+        const shakeStyle = document.createElement('style');
+        shakeStyle.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(shakeStyle);
     </script>
 </body>
 </html>
